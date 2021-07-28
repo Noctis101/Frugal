@@ -1,0 +1,28 @@
+#header {
+  height: 66px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  color: #FFFFFF;
+  background-color: #35824E;
+}
+
+#header .area {
+  display: flex;
+}
+
+#header .area #text {
+  padding-left: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-size: 44px;
+  font-weight: 500;
+  font-family: 'Style Script', cursive
+}
+
+#header .area #logo {
+  padding-left: 8px;
+  padding-top: 18px;
+  height: 48px;
+  width: 48px;
+}
