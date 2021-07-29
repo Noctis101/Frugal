@@ -4,14 +4,14 @@
   position: absolute;
   top: 0;
   color: #FFFFFF;
-  background-color: #35824E;
+  background-color: #5D9B71;
 }
 
 #header .area {
   display: flex;
 }
 
-#header .area #text {
+#header .area #appName {
   padding-left: 4px;
   padding-top: 2px;
   padding-bottom: 2px;

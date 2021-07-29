@@ -8,9 +8,9 @@ class Header extends React.Component {
     return (
       <div>
         <Grid container id="header">
-          <Grid className="area" item xs={12}>
+          <Grid item className="area" xs={12}>
             <img id="logo" src={logo} alt=""/>
-            <div id="text">Frugal</div>
+            <div id="appName">Frugal</div>
           </Grid>
         </Grid>
       </div>

@@ -6,7 +6,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div style={{backgroundColor: 'black'}} className="frugal">
+      <div className="frugal">
         <Display/>
       </div>
     );

@@ -7,7 +7,7 @@ class Footer extends React.Component {
     return (
       <div>
         <Grid container id="footer">
-          <Grid item xs={12}>Powered by Norus</Grid>
+          <Grid item xs={12}>Powered by Norus Technologies ©</Grid>
         </Grid>
       </div>
     )
