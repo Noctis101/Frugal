@@ -7,6 +7,7 @@ import {
   Input, Dropdown, DropdownToggle,
   DropdownMenu, DropdownItem
 } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import "./styles.css";
 
 class Calculator extends React.Component {
@@ -125,7 +126,11 @@ class Calculator extends React.Component {
                 </CardText>
                 <Button id="view">View Input List</Button>
                 <br />
-                <Button id="submit">Submit</Button>
+                <Link to="/summary">
+                  <Button id="submit">
+                    Submit
+                  </Button>
+                </Link>
               </CardBody>
             </Card>
           </Grid>   

@@ -1,14 +1,25 @@
 import React from "react";
-import Display from "./components/Display";
-import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import LoginPage from "./pages/Login/Login";
+import HomePage from "./pages/Home/Home";
+import SummaryPage from "./pages/Summary/Summary";
 
-export default class App extends React.Component {
+export default function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/login">
+          <LoginPage/>
+        </Route>
 
-  render() {
-    return (
-      <div className="frugal">
-        <Display/>
-      </div>
-    );
-  }
+        <Route path="/summary">
+          <SummaryPage/>
+        </Route>
+
+        <Route path="/">
+          <HomePage/>
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
