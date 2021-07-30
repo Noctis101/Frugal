@@ -12,58 +12,49 @@
 }
 
 #summary {
-  height: 480px;
+  height: 420px;
   background-color: #5D9B71;
   border-radius: 25px 25px 25px 25px;
   box-shadow: 0 0 10px #444444;
 }
 
-#summary-title {
-  text-align: center;
-  color: #FFFFFF;
-}
-
-#summary-subtitle {
-  text-align: center;
-  color: #FFFFFF;
-}
-
-#calc-form {
-  background-color: #5D9B71;
-  height: 305px;
-  width: 100%;
-  border-radius: 20px 20px 20px 20px;
-}
-
-#calc-form .dropdown {
+.summary-title {
   padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-#calc-form .dropdown .button {
+  text-align: center;
   color: #FFFFFF;
-  background-color: #666666;
 }
 
-#calc-form .prepend {
-  color: #5D9B71;
+.summary-title .condition {
+  padding-top: 20px;
+}
+
+.summary-subtitle {
+  padding-top: 10px;
+  padding-bottom: 30px;
+  text-align: center;
+  color: #FFFFFF;    
+}
+
+#compare {
+  height: 30px;
+  width: 100%;
   font-size: 16px;
-  font-weight: bold;
-  background-color: #ffd700;
-  border-radius: 50px 0px 0px 50px;
 }
 
-#calc-form .amount {
-  border-radius: 0px 50px 50px 0px;
+#compare #income {
+  background-color: #ffc107;
+}
+
+#compare #expense {
+  background-color: #dc3545;
 }
 
 #back {
   width: 100%;
-  margin-top: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: #5D9B71;
-  background-color: #ffd700;
+  color: #FFFFFF;
+  background-color: #ffc107;
   border-radius: 50px 50px 50px 50px;
   box-shadow: 0 0 10px #444444;
 }

@@ -30,21 +30,39 @@
   border-radius: 20px 20px 20px 20px;
 }
 
-#calc-form .dropdown {
+#calc-form .horizontal {
+  display: flex;
+}
+
+#calc-form .horizontal .dropdown {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
-#calc-form .dropdown .button {
+#calc-form .horizontal .dropdown .button {
   color: #FFFFFF;
   background-color: #666666;
 }
 
+#calc-form .horizontal .add {
+  margin-top: 10px;
+  margin-left: 18px;
+  width: 60px;
+  height: 38px;
+  background-color: #32CD32;
+}
+
 #calc-form .prepend {
-  color: #5D9B71;
+  color: #FFFFFF;
   font-size: 16px;
-  font-weight: bold;
-  background-color: #ffd700;
+  background-color: #ffc107;
+  border-radius: 50px 0px 0px 50px;
+}
+
+#calc-form #expense-prepend {
+  color: #FFFFFF;
+  font-size: 16px;
+  background-color: #dc3545;
   border-radius: 50px 0px 0px 50px;
 }
 
@@ -67,8 +85,8 @@
   margin-top: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: #5D9B71;
-  background-color: #ffd700;
+  color: #FFFFFF;
+  background-color: #ffc107;
   border-radius: 50px 50px 50px 50px;
   box-shadow: 0 0 10px #444444;
 }

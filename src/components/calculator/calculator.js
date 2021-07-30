@@ -60,68 +60,77 @@ class Calculator extends React.Component {
               <CardBody>
                 <CardTitle id="calc-title" tag="h6">Please fill out the fields below</CardTitle>
                 <CardText id="calc-form">
-                  <Dropdown
-                    className="dropdown"
-                    isOpen={this.state.incomeDropdownOpen}
-                    toggle={this.toggleIncome}
-                  >
-                    <DropdownToggle className="button" caret>
-                      Select Income Type
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Salary</DropdownItem>
-                      <DropdownItem>Other</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
+                  <div className="horizontal">
+                    <Dropdown
+                      className="dropdown"
+                      isOpen={this.state.incomeDropdownOpen}
+                      toggle={this.toggleIncome}
+                    >
+                      <DropdownToggle className="button" caret>
+                        Select Income Type
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>Salary</DropdownItem>
+                        <DropdownItem>Other</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                    <Button className="add">Add</Button>
+                  </div>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText className="prepend">Amount</InputGroupText>
                     </InputGroupAddon>
-                    <Input className="amount"/>
+                    <Input className="amount" placeholder="e.g. 100,000"/>
                   </InputGroup>
-                  <Dropdown
-                    className="dropdown"
-                    isOpen={this.state.expenseDropdownOpen}
-                    toggle={this.toggleExpense}
-                  >
-                    <DropdownToggle className="button" caret>
-                      Select Expense Type
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Bills</DropdownItem>
-                      <DropdownItem>Food</DropdownItem>
-                      <DropdownItem>School Fees</DropdownItem>
-                      <DropdownItem>Loans</DropdownItem>
-                      <DropdownItem>Transportation Cost</DropdownItem>
-                      <DropdownItem>Other</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
+                  <div className="horizontal">
+                    <Dropdown
+                      className="dropdown"
+                      isOpen={this.state.savingsDropdownOpen}
+                      toggle={this.toggleSavings}
+                    >
+                      <DropdownToggle className="button" caret>
+                        Select Savings Type
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>Investments</DropdownItem>
+                        <DropdownItem>Pension</DropdownItem>
+                        <DropdownItem>Emergency Fund</DropdownItem>
+                        <DropdownItem>Other</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                    <Button className="add">Add</Button>
+                  </div>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText className="prepend">Amount</InputGroupText>
                     </InputGroupAddon>
-                    <Input className="amount"/>
+                    <Input className="amount" placeholder="e.g. 100,000"/>
                   </InputGroup>
-                  <Dropdown
-                    className="dropdown"
-                    isOpen={this.state.savingsDropdownOpen}
-                    toggle={this.toggleSavings}
-                  >
-                    <DropdownToggle className="button" caret>
-                      Select Savings Type
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>Investments</DropdownItem>
-                      <DropdownItem>Pension</DropdownItem>
-                      <DropdownItem>Emergency Fund</DropdownItem>
-                      <DropdownItem>Other</DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
+                  <div className="horizontal">
+                    <Dropdown
+                      className="dropdown"
+                      isOpen={this.state.expenseDropdownOpen}
+                      toggle={this.toggleExpense}
+                    >
+                      <DropdownToggle className="button" caret>
+                        Select Expense Type
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem>Bills</DropdownItem>
+                        <DropdownItem>Food</DropdownItem>
+                        <DropdownItem>School Fees</DropdownItem>
+                        <DropdownItem>Loans</DropdownItem>
+                        <DropdownItem>Transportation Cost</DropdownItem>
+                        <DropdownItem>Other</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                    <Button className="add">Add</Button>
+                  </div>
                   <InputGroup>
                     <InputGroupAddon addonType="prepend">
-                      <InputGroupText className="prepend">Amount</InputGroupText>
+                      <InputGroupText id="expense-prepend">Amount</InputGroupText>
                     </InputGroupAddon>
-                    <Input className="amount"/>
+                    <Input className="amount" placeholder="e.g. 100,000"/>
                   </InputGroup>
                 </CardText>
                 <Button id="view">View Input List</Button>
