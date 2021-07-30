@@ -8,7 +8,7 @@ import {
 import { Link } from 'react-router-dom';
 import "./styles.css";
 
-class Summary extends React.Component {
+class SummaryCard extends React.Component {
   constructor(props) {
     super(props);
 
@@ -198,4 +198,4 @@ class Summary extends React.Component {
   }
 }
 
-export default Summary;
+export default SummaryCard;

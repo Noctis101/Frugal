@@ -1,55 +1,37 @@
-#summary-area {
+#not-found-area {
   min-height: 100vh;
   color: #35824E;
   background-color: #FFFFFF;
 }
 
-#summary-space {
+#not-found-space {
   width: 100%;
   padding-top: 16px;
   padding-left: 30px;
   padding-right: 30px;
 }
 
-#summary {
+#not-found {
   height: 100%;
   background-color: #5D9B71;
   border-radius: 25px 25px 25px 25px;
   box-shadow: 0 0 10px #444444;
 }
 
-.summary-title {
+.not-found-title {
   padding-top: 10px;
   text-align: center;
   color: #FFFFFF;
 }
 
-.summary-title .condition {
-  padding-top: 20px;
-}
-
-.summary-subtitle {
+.not-found-text {
   padding-top: 10px;
-  padding-bottom: 30px;
+  font-size: 20px;
   text-align: center;
   color: #FFFFFF;    
 }
 
-#compare {
-  height: 30px;
-  width: 100%;
-  font-size: 16px;
-}
-
-#compare #income {
-  background-color: #ffc107;
-}
-
-#compare #expense {
-  background-color: #dc3545;
-}
-
-#back {
+#to-calculator {
   width: 100%;
   font-size: 18px;
   font-weight: bold;

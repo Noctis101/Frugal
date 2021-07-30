@@ -17,12 +17,43 @@ class Calculator extends React.Component {
     this.toggleIncome = this.toggleIncome.bind(this);
     this.toggleExpense = this.toggleExpense.bind(this);
     this.toggleSavings = this.toggleSavings.bind(this);
+    this.changeIncomeType = this.changeIncomeType.bind(this);
+    this.changeSavingsType = this.changeSavingsType.bind(this);
+    this.changeExpenseType = this.changeExpenseType.bind(this);
+    // this.handleIncomeChange = this.handleIncomeChange.bind(this);
+    // this.handleIncomeChange = this.handleIncomeChange.bind(this);
+    // this.handleIncomeChange = this.handleIncomeChange.bind(this);
 
     this.state = {
       incomeDropdownOpen: false,
-      incomeDropdownValue: '',
+      incomeList: [
+        { id: 'salary', type: 'Salary', amount: 0 },
+        { id: 'other', type: 'Other', amount: 0 }
+      ],
+      incomeType: 'Select Income Type',
+      incomeAmount: '',
+
+      savingsDropdownOpen: false,
+      savingsList: [
+        { id: 'investment', type: 'Investments', amount: 0 },
+        { id: 'pension', type: 'Pension', amount: 0 },
+        { id: 'emergency', type: 'Emergency', amount: 0 },
+        { id: 'other', type: 'Other', amount: 0 }
+      ],
+      savingsType: 'Select Savings Type',
+      savingsAmount: '',
+
       expenseDropdownOpen: false,
-      savingsDropdownOpen: false
+      expenseList: [
+        { id: 'bills', type: 'Bills', amount: 0 },
+        { id: 'food', type: 'Food', amount: 0 },
+        { id: 'school', type: 'School Fees', amount: 0 },
+        { id: 'loans', type: 'Loans', amount: 0 },
+        { id: 'transportation', type: 'Transportation Cost', amount: 0 },
+        { id: 'other', type: 'Other', amount: 0 }
+      ],
+      expenseType: 'Select Expense Type',
+      expenseAmount: ''
     };
   }
 
@@ -44,6 +75,36 @@ class Calculator extends React.Component {
     });
   }
 
+  changeIncomeType(e) {
+    this.setState({incomeType: e.currentTarget.textContent});
+  }
+
+  changeSavingsType(e) {
+    this.setState({savingsType: e.currentTarget.textContent});
+  }
+
+  changeExpenseType(e) {
+    this.setState({expenseType: e.currentTarget.textContent});
+  }
+
+  // handleIncomeChange(e) {
+  //   e.target.value;
+
+  //   this.setState({});
+  // }
+
+  // handleSavingsChange(e) {
+  //   e.target.value;
+
+  //   this.setState({});
+  // }
+
+  // handleExpenseChange(e) {
+  //   e.target.value;
+
+  //   this.setState({});
+  // }
+
   render() {
     return (
       <div>
@@ -58,7 +119,9 @@ class Calculator extends React.Component {
           <Grid item id="calc-space" xs={12}>
             <Card id="calculator">
               <CardBody>
-                <CardTitle id="calc-title" tag="h6">Please fill out the fields below</CardTitle>
+                <CardTitle id="calc-title" tag="h6">
+                  Please enter your details below
+                </CardTitle>
                 <CardText id="calc-form">
                   <div className="horizontal">
                     <Dropdown
@@ -67,11 +130,14 @@ class Calculator extends React.Component {
                       toggle={this.toggleIncome}
                     >
                       <DropdownToggle className="button" caret>
-                        Select Income Type
+                        {this.state.incomeType}
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem>Salary</DropdownItem>
-                        <DropdownItem>Other</DropdownItem>
+                        {this.state.incomeList.map(e => {
+                          return <DropdownItem name={e.id} onClick={this.changeIncomeType}>
+                            {e.type}
+                          </DropdownItem>
+                        })}
                       </DropdownMenu>
                     </Dropdown>
                     <Button className="add">Add</Button>
@@ -80,7 +146,13 @@ class Calculator extends React.Component {
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText className="prepend">Amount</InputGroupText>
                     </InputGroupAddon>
-                    <Input className="amount" placeholder="e.g. 100,000"/>
+                    <Input
+                      className="amount"
+                      type="number"
+                      value={this.state.incomeAmount}
+                      placeholder="e.g. 100000"
+                      onChange={this.handleInputChange}
+                    />
                   </InputGroup>
                   <div className="horizontal">
                     <Dropdown
@@ -89,13 +161,14 @@ class Calculator extends React.Component {
                       toggle={this.toggleSavings}
                     >
                       <DropdownToggle className="button" caret>
-                        Select Savings Type
+                        {this.state.savingsType}
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem>Investments</DropdownItem>
-                        <DropdownItem>Pension</DropdownItem>
-                        <DropdownItem>Emergency Fund</DropdownItem>
-                        <DropdownItem>Other</DropdownItem>
+                        {this.state.savingsList.map(e => {
+                          return <DropdownItem name={e.id} onClick={this.changeSavingsType}>
+                            {e.type}
+                          </DropdownItem>
+                        })}
                       </DropdownMenu>
                     </Dropdown>
                     <Button className="add">Add</Button>
@@ -104,7 +177,13 @@ class Calculator extends React.Component {
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText className="prepend">Amount</InputGroupText>
                     </InputGroupAddon>
-                    <Input className="amount" placeholder="e.g. 100,000"/>
+                    <Input
+                      className="amount"
+                      type="number"
+                      value={this.state.savingsAmount}
+                      placeholder="e.g. 100000"
+                      onChange={this.handleInputChange}
+                    />
                   </InputGroup>
                   <div className="horizontal">
                     <Dropdown
@@ -113,15 +192,14 @@ class Calculator extends React.Component {
                       toggle={this.toggleExpense}
                     >
                       <DropdownToggle className="button" caret>
-                        Select Expense Type
+                        {this.state.expenseType}
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem>Bills</DropdownItem>
-                        <DropdownItem>Food</DropdownItem>
-                        <DropdownItem>School Fees</DropdownItem>
-                        <DropdownItem>Loans</DropdownItem>
-                        <DropdownItem>Transportation Cost</DropdownItem>
-                        <DropdownItem>Other</DropdownItem>
+                        {this.state.expenseList.map(e => {
+                          return <DropdownItem name={e.id} onClick={this.changeExpenseType}>
+                            {e.type}
+                          </DropdownItem>
+                        })}
                       </DropdownMenu>
                     </Dropdown>
                     <Button className="add">Add</Button>
@@ -130,7 +208,13 @@ class Calculator extends React.Component {
                     <InputGroupAddon addonType="prepend">
                       <InputGroupText id="expense-prepend">Amount</InputGroupText>
                     </InputGroupAddon>
-                    <Input className="amount" placeholder="e.g. 100,000"/>
+                    <Input
+                      className="amount"
+                      type="number"
+                      value={this.state.expenseAmount}
+                      placeholder="e.g. 100000"
+                      onChange={this.handleInputChange}
+                    />
                   </InputGroup>
                 </CardText>
                 <Button id="view">View Input List</Button>
