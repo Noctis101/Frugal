@@ -97,7 +97,7 @@ class SummaryCard extends React.Component {
           spacing={0}
           direction="column"
           alignItems="center"
-          justify="center"
+          justifyContent="center"
         >
           <Grid item id="summary-space" xs={12}>
             <Card id="summary"> 
@@ -115,10 +115,10 @@ class SummaryCard extends React.Component {
                   <CardText>
                     <Progress multi id="compare">
                       <Progress bar id="income" value={this.state.incomeWidth}>
-                        $1,000,000
+                        $1000000
                       </Progress>
                       <Progress bar id="expense" value={this.state.expenseWidth}>
-                        $500,000
+                        $500000
                       </Progress>
                     </Progress>
                   </CardText>

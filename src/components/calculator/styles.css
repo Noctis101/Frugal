@@ -1,3 +1,31 @@
+#list-modal {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#list {
+  background-color: #5D9B71;
+  height: 100%;
+  width: 100%;
+}
+
+#close {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+#close-button {
+  height: 40px;
+  width: 100px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #FFFFFF;
+  color: #5D9B71;
+  border-radius: 50px 50px 50px 50px;
+  box-shadow: 0 0 10px #444444;
+}
+
 #calc-area {
   min-height: 100vh;
   color: #35824E;
@@ -80,7 +108,7 @@
   box-shadow: 0 0 10px #444444;
 }
 
-#submit {
+#calculate {
   width: 100%;
   margin-top: 10px;
   font-size: 18px;

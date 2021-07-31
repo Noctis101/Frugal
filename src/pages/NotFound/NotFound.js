@@ -20,7 +20,7 @@ class NotFound extends React.Component {
           spacing={0}
           direction="column"
           alignItems="center"
-          justify="center"
+          justifyContent="center"
         >
           <Grid item id="not-found-space" xs={12}>
             <Card id="not-found">
