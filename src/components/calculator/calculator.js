@@ -9,6 +9,8 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Income from "../DetailsList/income/income";
+import Savings from "../DetailsList/savings/savings";
+import Expenses from "../DetailsList/expenses/expenses";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import "./styles.css";
@@ -45,6 +47,8 @@ class Calculator extends React.Component {
     this.deleteFromExpenseList = this.deleteFromExpenseList.bind(this);
     this.updateExpenseList = this.updateExpenseList.bind(this);
 
+    this.calculateTotals = this.calculateTotals.bind(this);
+
     this.state = {
       modal: false,
 
@@ -76,13 +80,16 @@ class Calculator extends React.Component {
         { id: 'food', type: 'Food', selected: false },
         { id: 'school', type: 'School Fees', selected: false },
         { id: 'loans', type: 'Loans', selected: false },
-        { id: 'transportation', type: 'Transportation Cost', selected: false },
+        { id: 'transportation', type: 'Transportation', selected: false },
         { id: 'other', type: 'Other', selected: false }
       ],
       expenseId: '',
       expenseType: 'Select Expense Type',
       expenseAmount: '',
-      expenseList: []
+      expenseList: [],
+
+      totalCapital: '',
+      totalExpense: ''
     };
   }
 
@@ -270,6 +277,10 @@ class Calculator extends React.Component {
         item.amount = amount;
       }
     })
+
+    this.setState({
+      incomeList: this.state.incomeList
+    })
   }
 
   updateSavingsList(id, amount) {
@@ -277,6 +288,10 @@ class Calculator extends React.Component {
       if (item.id === id) {
         item.amount = amount;
       }
+    })
+
+    this.setState({
+      savingsList: this.state.savingsList
     })
   }
 
@@ -286,31 +301,43 @@ class Calculator extends React.Component {
         item.amount = amount;
       }
     })
+
+    this.setState({
+      expenseList: this.state.expenseList
+    })
+  }
+
+  calculateTotals() {
+    let totalIncome = '';
+    let totalSavings = '';
+    let totalCapital = '';
+    let totalExpense = '';
+
+    this.state.incomeList.forEach(function (item) {
+      totalIncome += item.amount;
+    })
+
+    if (this.state.savingsList.length) {
+      this.state.savingsList.forEach(function (item) {
+        totalSavings += item.amount;
+      })
+    }
+
+    totalCapital = totalIncome + totalSavings;
+
+    this.state.expenseList.forEach(function (item) {
+      totalExpense += item.amount;
+    })
+
+    this.setState({
+      totalCapital: totalCapital,
+      totalExpense: totalExpense
+    });
   }
 
   render() {
     return (
       <div>
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggleModal}
-          centered={true}
-          id="list-modal"
-        >
-          <div id="list">
-            <Income
-              incomeList={this.state.incomeList}
-              updateIncomeList={this.updateIncomeList}
-              deleteFromIncomeList={this.deleteFromIncomeList}
-            />
-            <div id="close">
-              <Button id="close-button" onClick={this.toggleModal}>
-                Close
-              </Button>
-            </div>
-          </div>
-        </Modal>
-
         <Grid
           container
           id="calc-area"
@@ -449,11 +476,16 @@ class Calculator extends React.Component {
                     />
                   </InputGroup>
                 </CardText>
-                <Button id="view" onClick={this.toggleModal}>View Details List</Button>
+                <Button id="view" onClick={this.toggleModal}>
+                  View Details List
+                </Button>
                 <br />
                 {this.state.incomeList.length && this.state.expenseList.length ?
                   <Link to="/summary">
-                    <Button id="calculate">
+                    <Button
+                      id="calculate"
+                      onClick={this.calculateTotals}
+                    >
                       Calculate
                     </Button>
                   </Link>
@@ -462,6 +494,51 @@ class Calculator extends React.Component {
             </Card>
           </Grid>   
         </Grid>
+
+        <Modal
+          isOpen={this.state.modal}
+          toggle={this.toggleModal}
+          centered={true}
+          id="list-modal"
+        >
+          <div id="list">
+            <div className="title">Income</div>
+            {this.state.incomeList.length ?
+              <Income
+                incomeList={this.state.incomeList}
+                deleteFromIncomeList={this.deleteFromIncomeList}
+                updateIncomeList={this.updateIncomeList}
+              />
+              :
+              <div className="empty">No Items Entered</div>
+            }
+            <div className="title">Savings</div>
+            {this.state.savingsList.length ?
+              <Savings
+                savingsList={this.state.savingsList}
+                deleteFromSavingsList={this.deleteFromSavingsList}
+                updateSavingsList={this.updateSavingsList}
+              />
+              :
+              <div className="empty">No Items Entered</div>
+            }
+            <div className="title">Expenses</div>
+            {this.state.expenseList.length ?
+              <Expenses
+                expenseList={this.state.expenseList}
+                deleteFromExpenseList={this.deleteFromExpenseList}
+                updateExpenseList={this.updateExpenseList}
+              />
+              :
+              <div className="empty">No Items Entered</div>
+            }
+            <div id="close">
+              <Button id="close-button" onClick={this.toggleModal}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </Modal>
       </div>
     )
   }

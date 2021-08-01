@@ -3,17 +3,17 @@ import FlipMove from 'react-flip-move';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './styles.css';
 
-function Income(props) {
+function Income (props) {
   const incomeList = props.incomeList;
 
   const items = incomeList.map(item => {
-    return <div className="list" key={item.id}>
+    return <div id="income-list" key={item.id}>
       <div className="item">
-        <div className="item-type">{item.type}</div>
+        <div className="item-type">{item.type} -</div>
 
         <input type="number" id={item.id} value={item.amount} onChange={(e) => {
-          props.updateIncomeList(e.target.value, item.id)
-        }} />
+          props.updateIncomeList(item.id, e.currentTarget.value)}}
+        />
 
         <div className="remove">
           <FontAwesomeIcon className="faicons" onClick={() => {
@@ -24,7 +24,7 @@ function Income(props) {
     </div>
   })
 
-  return <div id="income-area">
+  return <div>
     <FlipMove duration={300} easing="ease-in-out">
       {items}
     </FlipMove>

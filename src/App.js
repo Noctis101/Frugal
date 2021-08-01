@@ -5,24 +5,30 @@ import HomePage from "./pages/Home/Home";
 import SummaryPage from "./pages/Summary/Summary";
 import NotFound from "./pages/NotFound/NotFound";
 
-export default function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/login">
-          <LoginPage/>
-        </Route>
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Router>
+          <Switch>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
 
-        <Route path="/summary">
-          <SummaryPage/>
-        </Route>
+            <Route path="/summary">
+              <SummaryPage />
+            </Route>
 
-        <Route exact path="/">
-          <HomePage/>
-        </Route>
+            <Route exact path="/">
+                <HomePage />
+            </Route>
 
-        <Route component={NotFound}/>
-      </Switch>
-    </Router>
-  );
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
+      </div>
+    )
+  }
 }
+
+export default App;

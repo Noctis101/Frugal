@@ -1,5 +1,5 @@
-.list {
-  width: 300px;
+#income-list {
+  width: 240px;
   margin: 20px auto;
   height: 50px;
   background-color: #ffc107;
@@ -7,30 +7,33 @@
   border-radius: 5px;
 }
 
-.list .item {
+#income-list .item {
   padding: 10px;
   position: relative;
   transition: ease-in-out;
   display: flex;
 }
 
-.list .item .item-type {
-  
+#income-list .item .item-type {
+  padding-top: 2px;
+  padding-right: 6px;
 }
 
-.list .item input {
+#income-list .item input {
   background-color: transparent;
   border: 0;
   color: #fff;
+  width: 100px;
   font-size: 18px;
 }
 
-.list .item input:focus {
+#income-list .item input:focus {
   outline: none;
 }
 
-.list .remove {
+#income-list .remove {
   position: absolute;
+  padding-top: 2px;
   right: 10px;
 }
 

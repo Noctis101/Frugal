@@ -9,6 +9,21 @@
   width: 100%;
 }
 
+#list .title {
+  padding-top: 10px;
+  padding-left: 20px;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+
+#list .empty {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+
 #close {
   text-align: center;
   width: 100%;

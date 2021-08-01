@@ -13,20 +13,20 @@ class SummaryCard extends React.Component {
     super(props);
 
     this.state = {
-      incomeWidth: 0,
-      expenseWidth: 0,
-      greater: true,
+      incomeWidth: 60,
+      expenseWidth: 40,
+      greater: false,
       lesser: false,
-      equal: false
+      equal: false,
     };
   }
 
   componentDidMount() {
-    if (this.state.greater) {
+    if (this.props.totalCapital > this.props.totalExpense) {
       this.goodScenario();
-    } else if (this.state.lesser) {
+    } else if (this.props.totalCapital < this.props.totalExpense) {
       this.badScenario();
-    } else if (this.state.equal) {
+    } else if (this.props.totalCapital === this.props.totalExpense) {
       this.okayScenario();
     }
   }
@@ -48,6 +48,8 @@ class SummaryCard extends React.Component {
         this.setState({expenseWidth: expense});
       }
     }, 1)
+
+    this.setState({ greater: true });
   }
 
   badScenario() {
@@ -67,6 +69,8 @@ class SummaryCard extends React.Component {
         this.setState({expenseWidth: expense});
       }
     }, 1)
+
+    this.setState({ lesser: true });
   }
 
   okayScenario() {
@@ -86,9 +90,12 @@ class SummaryCard extends React.Component {
         this.setState({expenseWidth: expense});
       }
     }, 1)
+
+    this.setState({ equal: true });
   }
 
   render() {
+    console.log(this.props.totalCapital, this.props.totalExpense)
     return (
       <div>
         <Grid
@@ -115,10 +122,10 @@ class SummaryCard extends React.Component {
                   <CardText>
                     <Progress multi id="compare">
                       <Progress bar id="income" value={this.state.incomeWidth}>
-                        $1000000
+                        ${this.props.totalCapital}
                       </Progress>
                       <Progress bar id="expense" value={this.state.expenseWidth}>
-                        $500000
+                        ${this.props.totalExpense}
                       </Progress>
                     </Progress>
                   </CardText>
@@ -145,11 +152,11 @@ class SummaryCard extends React.Component {
                   <CardText>
                     <Progress multi id="bar">
                       <Progress bar color="warning" value={this.state.incomeWidth}>
-                        $500,000
-                        </Progress>
+                        ${this.props.totalCapital}
+                      </Progress>
                       <Progress bar color="danger" value={this.state.expenseWidth}>
-                        $1,000,000
-                        </Progress>
+                        ${this.props.totalExpense}
+                      </Progress>
                     </Progress>
                   </CardText>
                   <br/>
@@ -175,10 +182,10 @@ class SummaryCard extends React.Component {
                   <CardText>
                     <Progress multi id="bar">
                       <Progress bar color="warning" value={this.state.incomeWidth}>
-                        $1,000,000
+                        ${this.props.totalCapital}
                         </Progress>
                       <Progress bar color="danger" value={this.state.expenseWidth}>
-                        $1,000,000
+                        ${this.props.totalExpense}
                         </Progress>
                     </Progress>
                   </CardText>
