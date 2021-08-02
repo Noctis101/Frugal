@@ -5,10 +5,7 @@
 }
 
 #summary-space {
-  width: 100%;
-  padding-top: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
+  width: 320px;
 }
 
 #summary {
@@ -38,23 +35,33 @@
 #compare {
   height: 30px;
   width: 100%;
-  font-size: 16px;
+  font-size: 18px;
 }
 
-#compare #income {
+#compare .income {
   background-color: #ffc107;
 }
 
-#compare #expense {
+#compare .expense {
   background-color: #dc3545;
 }
 
+#back-area {
+  text-align: center;
+}
+
 #back {
-  width: 100%;
+  width: 200px;
   font-size: 18px;
   font-weight: bold;
   color: #FFFFFF;
   background-color: #ffc107;
   border-radius: 50px 50px 50px 50px;
   box-shadow: 0 0 10px #444444;
+}
+
+@media screen and (min-width: 768px) {
+  #summary-space {
+    width: 500px;
+  }
 }

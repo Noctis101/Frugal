@@ -7,7 +7,7 @@ import {
   Input, Dropdown, DropdownToggle,
   DropdownMenu, DropdownItem, Modal
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Income from "../DetailsList/income/income";
 import Savings from "../DetailsList/savings/savings";
 import Expenses from "../DetailsList/expenses/expenses";
@@ -88,8 +88,8 @@ class Calculator extends React.Component {
       expenseAmount: '',
       expenseList: [],
 
-      totalCapital: '',
-      totalExpense: ''
+      totalCapital: 0,
+      totalExpense: 0
     };
   }
 
@@ -307,31 +307,44 @@ class Calculator extends React.Component {
     })
   }
 
-  calculateTotals() {
-    let totalIncome = '';
-    let totalSavings = '';
-    let totalCapital = '';
-    let totalExpense = '';
+   calculateTotals() {
+    let incomeAmount = 0;
+    let expenseAmount = 0;
+
+    let totalIncome = 0;
+    let totalSavings = 0;
+    let totalCapital = 0;
+    let totalExpense = 0;
 
     this.state.incomeList.forEach(function (item) {
-      totalIncome += item.amount;
+      incomeAmount = parseInt(item.amount);
+      totalIncome += incomeAmount;
     })
 
     if (this.state.savingsList.length) {
+      let savingsAmount = 0;
+
       this.state.savingsList.forEach(function (item) {
-        totalSavings += item.amount;
+        savingsAmount = parseInt(item.amount);
+        totalSavings += savingsAmount;
       })
     }
 
     totalCapital = totalIncome + totalSavings;
 
     this.state.expenseList.forEach(function (item) {
-      totalExpense += item.amount;
+      expenseAmount = parseInt(item.amount);
+      totalExpense += expenseAmount;
     })
 
     this.setState({
       totalCapital: totalCapital,
       totalExpense: totalExpense
+    }, () => {
+      this.props.history.push("/summary", { 
+        totalCapital: this.state.totalCapital,
+        totalExpense: this.state.totalExpense
+      });
     });
   }
 
@@ -476,19 +489,17 @@ class Calculator extends React.Component {
                     />
                   </InputGroup>
                 </CardText>
-                <Button id="view" onClick={this.toggleModal}>
-                  View Details List
-                </Button>
-                <br />
+                <div id="view-area">
+                  <Button id="view" onClick={this.toggleModal}>
+                    View Details List
+                  </Button>
+                </div>
                 {this.state.incomeList.length && this.state.expenseList.length ?
-                  <Link to="/summary">
-                    <Button
-                      id="calculate"
-                      onClick={this.calculateTotals}
-                    >
+                  <div id="calculate-area">
+                    <Button id="calculate" onClick={this.calculateTotals}>
                       Calculate
                     </Button>
-                  </Link>
+                  </div>
                 : null }
               </CardBody>
             </Card>
@@ -544,4 +555,4 @@ class Calculator extends React.Component {
   }
 }
 
-export default Calculator;
+export default withRouter(Calculator);

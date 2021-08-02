@@ -5,7 +5,7 @@ import {
   CardTitle, CardSubtitle, Button,
   Progress
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import "./styles.css";
 
 class SummaryCard extends React.Component {
@@ -13,20 +13,26 @@ class SummaryCard extends React.Component {
     super(props);
 
     this.state = {
-      incomeWidth: 60,
-      expenseWidth: 40,
+      incomeWidth: 0,
+      expenseWidth: 0,
       greater: false,
       lesser: false,
       equal: false,
+      totalCapital: props.location.state.totalCapital,
+      totalExpense: props.location.state.totalExpense
     };
   }
 
   componentDidMount() {
-    if (this.props.totalCapital > this.props.totalExpense) {
+    if (this.state.totalCapital > this.state.totalExpense) {
       this.goodScenario();
-    } else if (this.props.totalCapital < this.props.totalExpense) {
+    }
+    
+    if (this.state.totalCapital < this.state.totalExpense) {
       this.badScenario();
-    } else if (this.props.totalCapital === this.props.totalExpense) {
+    }
+    
+    if (this.state.totalCapital === this.state.totalExpense) {
       this.okayScenario();
     }
   }
@@ -95,7 +101,6 @@ class SummaryCard extends React.Component {
   }
 
   render() {
-    console.log(this.props.totalCapital, this.props.totalExpense)
     return (
       <div>
         <Grid
@@ -121,20 +126,22 @@ class SummaryCard extends React.Component {
                   </CardSubtitle>
                   <CardText>
                     <Progress multi id="compare">
-                      <Progress bar id="income" value={this.state.incomeWidth}>
-                        ${this.props.totalCapital}
+                      <Progress bar className="income" value={this.state.incomeWidth}>
+                        ${this.state.totalCapital}
                       </Progress>
-                      <Progress bar id="expense" value={this.state.expenseWidth}>
-                        ${this.props.totalExpense}
+                      <Progress bar className="expense" value={this.state.expenseWidth}>
+                        ${this.state.totalExpense}
                       </Progress>
                     </Progress>
                   </CardText>
                   <br/>
-                  <Link to="/">
-                    <Button id="back">
-                      Back to Calculator
-                    </Button>
-                  </Link>
+                  <div id="back-area">
+                    <Link to="/">
+                      <Button id="back">
+                        Back to Calculator
+                      </Button>
+                    </Link>
+                  </div>
                 </CardBody>
                 : null}
 
@@ -150,21 +157,23 @@ class SummaryCard extends React.Component {
                     You need to cut back on your expenses.
                   </CardSubtitle>
                   <CardText>
-                    <Progress multi id="bar">
-                      <Progress bar color="warning" value={this.state.incomeWidth}>
-                        ${this.props.totalCapital}
+                    <Progress multi id="compare">
+                      <Progress bar className="income" value={this.state.incomeWidth}>
+                        ${this.state.totalCapital}
                       </Progress>
-                      <Progress bar color="danger" value={this.state.expenseWidth}>
-                        ${this.props.totalExpense}
+                      <Progress bar className="expense" value={this.state.expenseWidth}>
+                        ${this.state.totalExpense}
                       </Progress>
                     </Progress>
                   </CardText>
                   <br/>
-                  <Link to="/">
-                    <Button id="back">
-                      Back to Calculator
-                    </Button>
-                  </Link>
+                  <div id="back-area">
+                    <Link to="/">
+                      <Button id="back">
+                        Back to Calculator
+                      </Button>
+                    </Link>
+                  </div>
                 </CardBody>
                 : null}
 
@@ -180,21 +189,23 @@ class SummaryCard extends React.Component {
                     Your budget is very tight.
                   </CardSubtitle>
                   <CardText>
-                    <Progress multi id="bar">
-                      <Progress bar color="warning" value={this.state.incomeWidth}>
-                        ${this.props.totalCapital}
+                    <Progress multi id="compare">
+                      <Progress bar className="income" value={this.state.incomeWidth}>
+                        ${this.state.totalCapital}
                         </Progress>
-                      <Progress bar color="danger" value={this.state.expenseWidth}>
-                        ${this.props.totalExpense}
+                      <Progress bar className="expense" value={this.state.expenseWidth}>
+                        ${this.state.totalExpense}
                         </Progress>
                     </Progress>
                   </CardText>
                   <br/>
-                  <Link to="/">
-                    <Button id="back">
-                      Back to Calculator
-                    </Button>
-                  </Link>
+                  <div id="back-area">
+                    <Link to="/">
+                      <Button id="back">
+                        Back to Calculator
+                      </Button>
+                    </Link>
+                  </div>
                 </CardBody>
                 : null}
             </Card>
@@ -205,4 +216,4 @@ class SummaryCard extends React.Component {
   }
 }
 
-export default SummaryCard;
+export default withRouter(SummaryCard);

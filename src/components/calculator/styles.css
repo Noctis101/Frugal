@@ -48,10 +48,8 @@
 }
 
 #calc-space {
-  width: 100%;
+  width: 320px;
   padding-top: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
 }
 
 #calculator {
@@ -113,8 +111,12 @@
   border-radius: 0px 50px 50px 0px;
 }
 
+#view-area {
+  text-align: center;
+}
+
 #view {
-  width: 100%;
+  width: 200px;
   font-size: 18px;
   font-weight: bold;
   color: #5D9B71;
@@ -123,8 +125,12 @@
   box-shadow: 0 0 10px #444444;
 }
 
+#calculate-area {
+  text-align: center;
+}
+
 #calculate {
-  width: 100%;
+  width: 200px;
   margin-top: 10px;
   font-size: 18px;
   font-weight: bold;
@@ -132,4 +138,10 @@
   background-color: #ffc107;
   border-radius: 50px 50px 50px 50px;
   box-shadow: 0 0 10px #444444;
+}
+
+@media screen and (min-width: 768px) {
+  #calc-space {
+    width: 500px;
+  }
 }

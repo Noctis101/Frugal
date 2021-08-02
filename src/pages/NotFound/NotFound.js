@@ -4,7 +4,7 @@ import {
   Card, CardText, CardBody,
   CardTitle, Button
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./styles.css";
@@ -34,11 +34,13 @@ class NotFound extends React.Component {
                   Please use the button below to go to the budget calculator.
                 </CardText>
                 <br />
-                <Link to="/">
-                  <Button id="to-calculator">
-                    Go to Calculator
-                  </Button>
-                </Link>
+                <div id="to-calculator-area">
+                  <Link to="/">
+                    <Button id="to-calculator">
+                      Go to Calculator
+                    </Button>
+                  </Link>
+                </div>
               </CardBody>
             </Card>
           </Grid>
@@ -49,4 +51,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound;
+export default withRouter(NotFound);

@@ -1,28 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import LoginPage from "./pages/Login/Login";
 import HomePage from "./pages/Home/Home";
 import SummaryPage from "./pages/Summary/Summary";
 import NotFound from "./pages/NotFound/NotFound";
 
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
         <Router>
           <Switch>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-
-            <Route path="/summary">
-              <SummaryPage />
-            </Route>
-
-            <Route exact path="/">
-                <HomePage />
-            </Route>
-
+            <Route exact path="/" component={HomePage} />
+            <Route path="/summary" component={SummaryPage} />
             <Route component={NotFound} />
           </Switch>
         </Router>
@@ -30,5 +19,3 @@ class App extends React.Component {
     )
   }
 }
-
-export default App;
